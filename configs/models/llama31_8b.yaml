@@ -1,0 +1,21 @@
+# Primary model config for the project.
+# This file maps the short manifest name "llama31_8b"
+# to the actual Hugging Face model ID and loading settings.
+
+model_key: llama31_8b
+hf_model_name: meta-llama/Llama-3.1-8B
+model_type: causal_lm
+
+# Use bfloat16 on A6000 if supported.
+torch_dtype: bfloat16
+
+# Let transformers place the model automatically on available GPU(s).
+device_map: auto
+
+# Keep this false unless a model specifically requires custom code.
+trust_remote_code: false
+
+# Smoke-test generation settings.
+max_new_tokens: 32
+do_sample: false
+temperature: 1.0
