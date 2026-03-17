@@ -1,0 +1,6 @@
+ria_core: primary pruning backend for magnitude, wanda, ria, sparsegpt
+lm-evaluation-harness: benchmark evaluation backend
+wanda_official: reference implementation for Wanda correctness checks
+sparsegpt_official: reference implementation for SparseGPT correctness checks
+AlphaPruning: layerwise sparsity schedule provider for Phase 3
+wandapp_local: to be implemented locally in src/prune/methods if needed

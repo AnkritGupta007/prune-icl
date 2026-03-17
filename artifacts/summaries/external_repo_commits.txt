@@ -1,0 +1,10 @@
+===== external/ria_core =====
+7bc55b06924659ea977f7804b773ce3ef0d55c2f
+===== external/lm-evaluation-harness =====
+d800e04dcb1ce96791d8b2926cf0cc7703d58457
+===== external/wanda_official =====
+8e8fc87b4a2f9955baa7e76e64d5fce7fa8724a6
+===== external/sparsegpt_official =====
+147d2159dc4f3e9f73e47b32c04d7b3708f44436
+===== external/AlphaPruning =====
+5f0e9845549ec8ee6dc395f1410566f26cc9e54e
