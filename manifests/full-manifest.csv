@@ -1,0 +1,81 @@
+run_id,phase,model,method,sparsity,schedule,calibration,task,num_fewshot,seed,enabled,limit,notes
+phase0__llama31_8b__dense__sp0__schuniform__calnone__capmini__seed13,phase0,llama31_8b,dense,0,uniform,none,mmlu_abstract_algebra,0,13,1,2,phase0 sanity dense
+phase0__llama31_8b__wanda__sp30__schuniform__calA__capmini__seed13,phase0,llama31_8b,wanda,30,uniform,A,mmlu_abstract_algebra,0,13,1,2,phase0 sanity wanda
+phase0__llama31_8b__wanda__sp50__schuniform__calA__capmini__seed13,phase0,llama31_8b,wanda,50,uniform,A,mmlu_abstract_algebra,0,13,1,2,phase0 sanity wanda
+phase0__llama31_8b__wanda__sp70__schuniform__calA__capmini__seed13,phase0,llama31_8b,wanda,70,uniform,A,mmlu_abstract_algebra,0,13,1,2,phase0 sanity wanda
+phase0__llama31_8b__sparsegpt__sp30__schuniform__calA__capmini__seed13,phase0,llama31_8b,sparsegpt,30,uniform,A,mmlu_abstract_algebra,0,13,1,2,phase0 sanity sparsegpt
+phase0__llama31_8b__sparsegpt__sp50__schuniform__calA__capmini__seed13,phase0,llama31_8b,sparsegpt,50,uniform,A,mmlu_abstract_algebra,0,13,1,2,phase0 sanity sparsegpt
+phase0__llama31_8b__sparsegpt__sp70__schuniform__calA__capmini__seed13,phase0,llama31_8b,sparsegpt,70,uniform,A,mmlu_abstract_algebra,0,13,1,2,phase0 sanity sparsegpt
+phase1__llama31_8b__dense__sp0__schuniform__calnone__mmlu_zs__seed13,phase1,llama31_8b,dense,0,uniform,none,mmlu,0,13,1,,mmlu zero-shot baseline
+phase1__llama31_8b__dense__sp0__schuniform__calnone__mmlu__seed13,phase1,llama31_8b,dense,0,uniform,none,mmlu,5,13,1,,mmlu k-shot baseline
+phase1__llama31_8b__dense__sp0__schuniform__calnone__bbh_zs__seed13,phase1,llama31_8b,dense,0,uniform,none,bbh,0,13,1,,bbh zero-shot baseline
+phase1__llama31_8b__dense__sp0__schuniform__calnone__bbh__seed13,phase1,llama31_8b,dense,0,uniform,none,bbh,3,13,1,,bbh k-shot baseline
+phase1__llama31_8b__dense__sp0__schuniform__calnone__gsm8k_zs__seed13,phase1,llama31_8b,dense,0,uniform,none,gsm8k,0,13,1,,gsm8k zero-shot baseline
+phase1__llama31_8b__dense__sp0__schuniform__calnone__gsm8k__seed13,phase1,llama31_8b,dense,0,uniform,none,gsm8k,8,13,1,,gsm8k k-shot baseline
+phase1__llama31_8b__wanda__sp30__schuniform__calA__mmlu_zs__seed13,phase1,llama31_8b,wanda,30,uniform,A,mmlu,0,13,1,,mmlu zero-shot core benchmark
+phase1__llama31_8b__wanda__sp30__schuniform__calA__mmlu__seed13,phase1,llama31_8b,wanda,30,uniform,A,mmlu,5,13,1,,mmlu k-shot core benchmark
+phase1__llama31_8b__wanda__sp30__schuniform__calA__bbh_zs__seed13,phase1,llama31_8b,wanda,30,uniform,A,bbh,0,13,1,,bbh zero-shot core benchmark
+phase1__llama31_8b__wanda__sp30__schuniform__calA__bbh__seed13,phase1,llama31_8b,wanda,30,uniform,A,bbh,3,13,1,,bbh k-shot core benchmark
+phase1__llama31_8b__wanda__sp30__schuniform__calA__gsm8k_zs__seed13,phase1,llama31_8b,wanda,30,uniform,A,gsm8k,0,13,1,,gsm8k zero-shot core benchmark
+phase1__llama31_8b__wanda__sp30__schuniform__calA__gsm8k__seed13,phase1,llama31_8b,wanda,30,uniform,A,gsm8k,8,13,1,,gsm8k k-shot core benchmark
+phase1__llama31_8b__wanda__sp50__schuniform__calA__mmlu_zs__seed13,phase1,llama31_8b,wanda,50,uniform,A,mmlu,0,13,1,,mmlu zero-shot core benchmark
+phase1__llama31_8b__wanda__sp50__schuniform__calA__mmlu__seed13,phase1,llama31_8b,wanda,50,uniform,A,mmlu,5,13,1,,mmlu k-shot core benchmark
+phase1__llama31_8b__wanda__sp50__schuniform__calA__bbh_zs__seed13,phase1,llama31_8b,wanda,50,uniform,A,bbh,0,13,1,,bbh zero-shot core benchmark
+phase1__llama31_8b__wanda__sp50__schuniform__calA__bbh__seed13,phase1,llama31_8b,wanda,50,uniform,A,bbh,3,13,1,,bbh k-shot core benchmark
+phase1__llama31_8b__wanda__sp50__schuniform__calA__gsm8k_zs__seed13,phase1,llama31_8b,wanda,50,uniform,A,gsm8k,0,13,1,,gsm8k zero-shot core benchmark
+phase1__llama31_8b__wanda__sp50__schuniform__calA__gsm8k__seed13,phase1,llama31_8b,wanda,50,uniform,A,gsm8k,8,13,1,,gsm8k k-shot core benchmark
+phase1__llama31_8b__wanda__sp70__schuniform__calA__mmlu_zs__seed13,phase1,llama31_8b,wanda,70,uniform,A,mmlu,0,13,1,,mmlu zero-shot core benchmark
+phase1__llama31_8b__wanda__sp70__schuniform__calA__mmlu__seed13,phase1,llama31_8b,wanda,70,uniform,A,mmlu,5,13,1,,mmlu k-shot core benchmark
+phase1__llama31_8b__wanda__sp70__schuniform__calA__bbh_zs__seed13,phase1,llama31_8b,wanda,70,uniform,A,bbh,0,13,1,,bbh zero-shot core benchmark
+phase1__llama31_8b__wanda__sp70__schuniform__calA__bbh__seed13,phase1,llama31_8b,wanda,70,uniform,A,bbh,3,13,1,,bbh k-shot core benchmark
+phase1__llama31_8b__wanda__sp70__schuniform__calA__gsm8k_zs__seed13,phase1,llama31_8b,wanda,70,uniform,A,gsm8k,0,13,1,,gsm8k zero-shot core benchmark
+phase1__llama31_8b__wanda__sp70__schuniform__calA__gsm8k__seed13,phase1,llama31_8b,wanda,70,uniform,A,gsm8k,8,13,1,,gsm8k k-shot core benchmark
+phase1__llama31_8b__wanda__sp90__schuniform__calA__mmlu_zs__seed13,phase1,llama31_8b,wanda,90,uniform,A,mmlu,0,13,0,,mmlu zero-shot planned 90 sparsity
+phase1__llama31_8b__wanda__sp90__schuniform__calA__mmlu__seed13,phase1,llama31_8b,wanda,90,uniform,A,mmlu,5,13,0,,mmlu k-shot planned 90 sparsity
+phase1__llama31_8b__wanda__sp90__schuniform__calA__bbh_zs__seed13,phase1,llama31_8b,wanda,90,uniform,A,bbh,0,13,0,,bbh zero-shot planned 90 sparsity
+phase1__llama31_8b__wanda__sp90__schuniform__calA__bbh__seed13,phase1,llama31_8b,wanda,90,uniform,A,bbh,3,13,0,,bbh k-shot planned 90 sparsity
+phase1__llama31_8b__wanda__sp90__schuniform__calA__gsm8k_zs__seed13,phase1,llama31_8b,wanda,90,uniform,A,gsm8k,0,13,0,,gsm8k zero-shot planned 90 sparsity
+phase1__llama31_8b__wanda__sp90__schuniform__calA__gsm8k__seed13,phase1,llama31_8b,wanda,90,uniform,A,gsm8k,8,13,0,,gsm8k k-shot planned 90 sparsity
+phase1__llama31_8b__sparsegpt__sp30__schuniform__calA__mmlu_zs__seed13,phase1,llama31_8b,sparsegpt,30,uniform,A,mmlu,0,13,1,,mmlu zero-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp30__schuniform__calA__mmlu__seed13,phase1,llama31_8b,sparsegpt,30,uniform,A,mmlu,5,13,1,,mmlu k-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp30__schuniform__calA__bbh_zs__seed13,phase1,llama31_8b,sparsegpt,30,uniform,A,bbh,0,13,1,,bbh zero-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp30__schuniform__calA__bbh__seed13,phase1,llama31_8b,sparsegpt,30,uniform,A,bbh,3,13,1,,bbh k-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp30__schuniform__calA__gsm8k_zs__seed13,phase1,llama31_8b,sparsegpt,30,uniform,A,gsm8k,0,13,1,,gsm8k zero-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp30__schuniform__calA__gsm8k__seed13,phase1,llama31_8b,sparsegpt,30,uniform,A,gsm8k,8,13,1,,gsm8k k-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp50__schuniform__calA__mmlu_zs__seed13,phase1,llama31_8b,sparsegpt,50,uniform,A,mmlu,0,13,1,,mmlu zero-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp50__schuniform__calA__mmlu__seed13,phase1,llama31_8b,sparsegpt,50,uniform,A,mmlu,5,13,1,,mmlu k-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp50__schuniform__calA__bbh_zs__seed13,phase1,llama31_8b,sparsegpt,50,uniform,A,bbh,0,13,1,,bbh zero-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp50__schuniform__calA__bbh__seed13,phase1,llama31_8b,sparsegpt,50,uniform,A,bbh,3,13,1,,bbh k-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp50__schuniform__calA__gsm8k_zs__seed13,phase1,llama31_8b,sparsegpt,50,uniform,A,gsm8k,0,13,1,,gsm8k zero-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp50__schuniform__calA__gsm8k__seed13,phase1,llama31_8b,sparsegpt,50,uniform,A,gsm8k,8,13,1,,gsm8k k-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp70__schuniform__calA__mmlu_zs__seed13,phase1,llama31_8b,sparsegpt,70,uniform,A,mmlu,0,13,1,,mmlu zero-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp70__schuniform__calA__mmlu__seed13,phase1,llama31_8b,sparsegpt,70,uniform,A,mmlu,5,13,1,,mmlu k-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp70__schuniform__calA__bbh_zs__seed13,phase1,llama31_8b,sparsegpt,70,uniform,A,bbh,0,13,1,,bbh zero-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp70__schuniform__calA__bbh__seed13,phase1,llama31_8b,sparsegpt,70,uniform,A,bbh,3,13,1,,bbh k-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp70__schuniform__calA__gsm8k_zs__seed13,phase1,llama31_8b,sparsegpt,70,uniform,A,gsm8k,0,13,1,,gsm8k zero-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp70__schuniform__calA__gsm8k__seed13,phase1,llama31_8b,sparsegpt,70,uniform,A,gsm8k,8,13,1,,gsm8k k-shot core benchmark
+phase1__llama31_8b__sparsegpt__sp90__schuniform__calA__mmlu_zs__seed13,phase1,llama31_8b,sparsegpt,90,uniform,A,mmlu,0,13,0,,mmlu zero-shot planned 90 sparsity
+phase1__llama31_8b__sparsegpt__sp90__schuniform__calA__mmlu__seed13,phase1,llama31_8b,sparsegpt,90,uniform,A,mmlu,5,13,0,,mmlu k-shot planned 90 sparsity
+phase1__llama31_8b__sparsegpt__sp90__schuniform__calA__bbh_zs__seed13,phase1,llama31_8b,sparsegpt,90,uniform,A,bbh,0,13,0,,bbh zero-shot planned 90 sparsity
+phase1__llama31_8b__sparsegpt__sp90__schuniform__calA__bbh__seed13,phase1,llama31_8b,sparsegpt,90,uniform,A,bbh,3,13,0,,bbh k-shot planned 90 sparsity
+phase1__llama31_8b__sparsegpt__sp90__schuniform__calA__gsm8k_zs__seed13,phase1,llama31_8b,sparsegpt,90,uniform,A,gsm8k,0,13,0,,gsm8k zero-shot planned 90 sparsity
+phase1__llama31_8b__sparsegpt__sp90__schuniform__calA__gsm8k__seed13,phase1,llama31_8b,sparsegpt,90,uniform,A,gsm8k,8,13,0,,gsm8k k-shot planned 90 sparsity
+phase1__llama31_8b__dense__sp0__schuniform__calnone__synthicl__zs__seed13,phase1,llama31_8b,dense,0,uniform,none,synthetic_linear_icl,0,13,1,,synthetic ICL dense ladder
+phase1__llama31_8b__dense__sp0__schuniform__calnone__synthicl__8__seed13,phase1,llama31_8b,dense,0,uniform,none,synthetic_linear_icl,8,13,1,,synthetic ICL dense ladder
+phase1__llama31_8b__dense__sp0__schuniform__calnone__synthicl__32__seed13,phase1,llama31_8b,dense,0,uniform,none,synthetic_linear_icl,32,13,1,,synthetic ICL dense ladder
+phase1__llama31_8b__wanda__sp30__schuniform__calA__synthicl__8__seed13,phase1,llama31_8b,wanda,30,uniform,A,synthetic_linear_icl,8,13,1,,synthetic ICL mechanism ladder
+phase1__llama31_8b__wanda__sp30__schuniform__calA__synthicl__32__seed13,phase1,llama31_8b,wanda,30,uniform,A,synthetic_linear_icl,32,13,1,,synthetic ICL mechanism ladder
+phase1__llama31_8b__wanda__sp50__schuniform__calA__synthicl__8__seed13,phase1,llama31_8b,wanda,50,uniform,A,synthetic_linear_icl,8,13,1,,synthetic ICL mechanism ladder
+phase1__llama31_8b__wanda__sp50__schuniform__calA__synthicl__32__seed13,phase1,llama31_8b,wanda,50,uniform,A,synthetic_linear_icl,32,13,1,,synthetic ICL mechanism ladder
+phase1__llama31_8b__wanda__sp70__schuniform__calA__synthicl__8__seed13,phase1,llama31_8b,wanda,70,uniform,A,synthetic_linear_icl,8,13,1,,synthetic ICL mechanism ladder
+phase1__llama31_8b__wanda__sp70__schuniform__calA__synthicl__32__seed13,phase1,llama31_8b,wanda,70,uniform,A,synthetic_linear_icl,32,13,1,,synthetic ICL mechanism ladder
+phase1__llama31_8b__wanda__sp90__schuniform__calA__synthicl__8__seed13,phase1,llama31_8b,wanda,90,uniform,A,synthetic_linear_icl,8,13,0,,synthetic ICL planned 90 sparsity
+phase1__llama31_8b__wanda__sp90__schuniform__calA__synthicl__32__seed13,phase1,llama31_8b,wanda,90,uniform,A,synthetic_linear_icl,32,13,0,,synthetic ICL planned 90 sparsity
+phase1__llama31_8b__sparsegpt__sp30__schuniform__calA__synthicl__8__seed13,phase1,llama31_8b,sparsegpt,30,uniform,A,synthetic_linear_icl,8,13,1,,synthetic ICL mechanism ladder
+phase1__llama31_8b__sparsegpt__sp30__schuniform__calA__synthicl__32__seed13,phase1,llama31_8b,sparsegpt,30,uniform,A,synthetic_linear_icl,32,13,1,,synthetic ICL mechanism ladder
+phase1__llama31_8b__sparsegpt__sp50__schuniform__calA__synthicl__8__seed13,phase1,llama31_8b,sparsegpt,50,uniform,A,synthetic_linear_icl,8,13,1,,synthetic ICL mechanism ladder
+phase1__llama31_8b__sparsegpt__sp50__schuniform__calA__synthicl__32__seed13,phase1,llama31_8b,sparsegpt,50,uniform,A,synthetic_linear_icl,32,13,1,,synthetic ICL mechanism ladder
+phase1__llama31_8b__sparsegpt__sp70__schuniform__calA__synthicl__8__seed13,phase1,llama31_8b,sparsegpt,70,uniform,A,synthetic_linear_icl,8,13,1,,synthetic ICL mechanism ladder
+phase1__llama31_8b__sparsegpt__sp70__schuniform__calA__synthicl__32__seed13,phase1,llama31_8b,sparsegpt,70,uniform,A,synthetic_linear_icl,32,13,1,,synthetic ICL mechanism ladder
+phase1__llama31_8b__sparsegpt__sp90__schuniform__calA__synthicl__8__seed13,phase1,llama31_8b,sparsegpt,90,uniform,A,synthetic_linear_icl,8,13,0,,synthetic ICL planned 90 sparsity
+phase1__llama31_8b__sparsegpt__sp90__schuniform__calA__synthicl__32__seed13,phase1,llama31_8b,sparsegpt,90,uniform,A,synthetic_linear_icl,32,13,0,,synthetic ICL planned 90 sparsity

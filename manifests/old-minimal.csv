@@ -6,6 +6,8 @@ phase0__llama31_8b__magnitude__sp30__schuniform__calnone__capmini__seed13,phase0
 phase0__llama31_8b__magnitude__sp70__schuniform__calnone__capmini__seed13,phase0,llama31_8b,magnitude,70,uniform,none,capability_mini,0,13,1,phase0 sanity magnitude
 
 phase1__llama31_8b__dense__sp0__schuniform__calnone__synthicl__seed13,phase1,llama31_8b,dense,0,uniform,none,synthetic_linear_icl,8,13,1,core dense synthetic
+phase1__llama31_8b__dense__sp0__schuniform__calnone__synthicl__32__seed13,phase1,llama31_8b,dense,0,uniform,none,synthetic_linear_icl,32,13,1,core dense synthetic
+
 phase1__llama31_8b__wanda__sp30__schuniform__calA__synthicl__seed13,phase1,llama31_8b,wanda,30,uniform,A,synthetic_linear_icl,8,13,1,core synthetic
 phase1__llama31_8b__wanda__sp50__schuniform__calA__synthicl__seed13,phase1,llama31_8b,wanda,50,uniform,A,synthetic_linear_icl,8,13,1,core synthetic
 phase1__llama31_8b__wanda__sp70__schuniform__calA__synthicl__seed13,phase1,llama31_8b,wanda,70,uniform,A,synthetic_linear_icl,8,13,1,core synthetic
@@ -28,9 +30,17 @@ phase1__llama31_8b__magnitude__sp50__schuniform__calnone__synthicl__seed13,phase
 phase1__llama31_8b__magnitude__sp70__schuniform__calnone__synthicl__seed13,phase1,llama31_8b,magnitude,70,uniform,none,synthetic_linear_icl,8,13,1,baseline synthetic
 phase1__llama31_8b__magnitude__sp90__schuniform__calnone__synthicl__seed13,phase1,llama31_8b,magnitude,90,uniform,none,synthetic_linear_icl,8,13,1,baseline synthetic
 
+phase1__llama31_8b__dense__sp0__schuniform__calnone__mmlu_zs__seed13,phase1,llama31_8b,dense,0,uniform,none,mmlu,0,13,1,credibility zero-shot
 phase1__llama31_8b__dense__sp0__schuniform__calnone__mmlu__seed13,phase1,llama31_8b,dense,0,uniform,none,mmlu,5,13,1,credibility slice
+phase1__llama31_8b__wanda__sp30__schuniform__calA__mmlu__seed13,phase1,llama31_8b,wanda,30,uniform,A,mmlu,5,13,1,smoke wanda 30 mmlu
+phase1__llama31_8b__sparsegpt__sp30__schuniform__calA__mmlu__seed13,phase1,llama31_8b,sparsegpt,30,uniform,A,mmlu,5,13,1,smoke sparsegpt 30 mmlu
 phase1__llama31_8b__wandapp__sp70__schuniform__calA__mmlu__seed13,phase1,llama31_8b,wandapp,70,uniform,A,mmlu,5,13,1,credibility slice
 phase1__llama31_8b__wandapp__sp80__schuniform__calA__mmlu__seed13,phase1,llama31_8b,wandapp,80,uniform,A,mmlu,5,13,1,credibility slice
 phase1__llama31_8b__ria__sp70__schuniform__calA__mmlu__seed13,phase1,llama31_8b,ria,70,uniform,A,mmlu,5,13,1,credibility slice
 phase1__llama31_8b__ria__sp80__schuniform__calA__mmlu__seed13,phase1,llama31_8b,ria,80,uniform,A,mmlu,5,13,1,credibility slice
 phase1__llama31_8b__magnitude__sp80__schuniform__calnone__mmlu__seed13,phase1,llama31_8b,magnitude,80,uniform,none,mmlu,5,13,1,credibility slice
+
+
+phase1__llama31_8b__dense__sp0__schuniform__calnone__mmlu_aa_zs__seed13,phase1,llama31_8b,dense,0,uniform,none,mmlu_abstract_algebra,0,13,1,runner smoke single subtask
+phase1__llama31_8b__dense__sp0__schuniform__calnone__mmlu_aa__seed13,phase1,llama31_8b,dense,0,uniform,none,mmlu_abstract_algebra,5,13,1,runner smoke single subtask 5-shot
+phase1__llama31_8b__dense__sp0__schuniform__calnone__synthicl_zs__seed13,phase1,llama31_8b,dense,0,uniform,none,synthetic_linear_icl,0,13,1,dense synthetic zero-shot
