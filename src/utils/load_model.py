@@ -38,6 +38,9 @@ def load_tokenizer_and_model(config_path: str):
     cfg = load_model_config(config_path)
 
     hf_model_name = cfg["hf_model_name"]
+    model_source = cfg.get("checkpoint_path", hf_model_name)
+
+
     trust_remote_code = bool(cfg.get("trust_remote_code", False))
     dtype_name = cfg.get("torch_dtype", "float16")
     device_map = cfg.get("device_map", "auto")
@@ -47,7 +50,7 @@ def load_tokenizer_and_model(config_path: str):
 
     # Load tokenizer.
     tokenizer = AutoTokenizer.from_pretrained(
-        hf_model_name,
+        model_source,
         trust_remote_code=trust_remote_code,
     )
 
@@ -58,11 +61,14 @@ def load_tokenizer_and_model(config_path: str):
 
     # Load model.
     model = AutoModelForCausalLM.from_pretrained(
-        hf_model_name,
+        model_source,
         torch_dtype=torch_dtype,
         device_map=device_map,
         trust_remote_code=trust_remote_code,
     )
+
+    if torch.cuda.is_available():
+        model = model.to("cuda")
 
     # Put model in eval mode since we are only doing inference here.
     model.eval()

@@ -3,7 +3,7 @@ import os
 import pandas as pd
 
 
-MANIFEST_PATH = "manifests/phase1_minimal.csv"
+MANIFEST_PATH = "manifests/full-manifest.csv"
 
 
 def load_manifest(path: str = MANIFEST_PATH) -> pd.DataFrame:

@@ -11,6 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass, asdict
 
 from src.utils.model_registry import get_model_config_path
+from typing import Optional
 
 
 @dataclass
@@ -32,6 +33,10 @@ class RunConfig:
     # Derived field resolved from the model registry.
     model_config_path: str
 
+    checkpoint_path: Optional[str] = None
+
+    limit: Optional[float] = None
+
     @property
     def output_dir(self) -> str:
         """Directory where artifacts for this run will be stored."""
@@ -41,6 +46,11 @@ class RunConfig:
     def summary_json(self) -> str:
         """Path where the resolved run config will be saved as JSON."""
         return f"{self.output_dir}/run_config.json"
+
+    @property
+    def raw_eval_json(self) -> str:
+        """Path where the raw lm-eval JSON output for this run will be stored."""
+        return f"{self.output_dir}/lm_eval_result.json"
 
 
 def row_to_config(row: dict) -> RunConfig:
@@ -56,6 +66,12 @@ def row_to_config(row: dict) -> RunConfig:
     model_key = str(row["model"])
     model_config_path = get_model_config_path(model_key)
 
+    limit = row.get("limit", None)
+    if limit is not None and str(limit).strip() != "":
+        limit = float(limit)
+    else: 
+        limit = None
+
     return RunConfig(
         run_id=str(row["run_id"]),
         phase=str(row["phase"]),
@@ -70,6 +86,7 @@ def row_to_config(row: dict) -> RunConfig:
         enabled=int(row["enabled"]),
         notes=str(row["notes"]),
         model_config_path=model_config_path,
+        limit=limit,
     )
 
 

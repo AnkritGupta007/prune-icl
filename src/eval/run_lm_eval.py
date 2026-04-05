@@ -55,11 +55,23 @@ def main():
         required=True,
         help="Where to save the raw harness result JSON.",
     )
+    parser.add_argument(
+        "--checkpoint_path",
+        type=str,
+        default=None,
+        help="Optional local checkpoint directory. If provided, use it instead of hf_model_name."
+    )
     args = parser.parse_args()
 
     # Load model settings from YAML.
     cfg = load_model_config(args.config)
     hf_model_name = cfg["hf_model_name"]
+
+    hf_model_name = cfg["hf_model_name"]
+    model_source = args.checkpoint_path if args.checkpoint_path else hf_model_name
+
+
+
     dtype_name = cfg.get("torch_dtype", "bfloat16")
 
     # Make sure parent output directory exists.
@@ -78,7 +90,7 @@ def main():
     cmd = [
         "lm_eval",
         "--model", "hf",
-        "--model_args", f"pretrained={hf_model_name},dtype={dtype_name},device_map=auto",
+        "--model_args", f"pretrained={model_source},device_map=auto",
         "--tasks", args.task,
         "--num_fewshot", str(args.num_fewshot),
         "--limit", str(args.limit),
@@ -88,6 +100,10 @@ def main():
 
     print("Running command:")
     print(" ".join(cmd))
+
+
+    print("Resolved model source:", model_source)
+    print("Final lm_eval command:", " ".join(cmd))
 
     # Run the harness process and stop on failure.
     subprocess.run(cmd, check=True)

@@ -1,9 +1,9 @@
 METHOD_BACKEND = {
     "dense": "none",
-    "magnitude": "ria_core",
-    "wanda": "ria_core",
-    "ria": "ria_core",
-    "sparsegpt": "ria_core",
+    "magnitude": "ria",
+    "wanda": "ria",
+    "ria": "ria",
+    "sparsegpt": "ria",
     "wandapp": "local",
 }
 

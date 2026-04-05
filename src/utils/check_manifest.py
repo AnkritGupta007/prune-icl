@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv("manifests/phase1_minimal.csv")
+df = pd.read_csv("manifests/full-manifest.csv")
 
 print("total rows:", len(df))
 print("\nphase counts:")
