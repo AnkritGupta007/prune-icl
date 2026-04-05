@@ -26,7 +26,7 @@ def main():
                         help="Path to raw lm-eval JSON output.")
     parser.add_argument("--output_jsonl", type=str, required=True,
                         help="Path to append flat JSONL records.")
-    parser.add_argument("--manifest", type=str, default="manifests/phase1_minimal.csv",
+    parser.add_argument("--manifest", type=str, default="manifests/full-manifest.csv",
                         help="Path to the experiment manifest.")
     args = parser.parse_args()
 
@@ -39,7 +39,10 @@ def main():
 
     # For MMLU we use the top-level group score if available.
     # In your current harness output, this is inside raw["groups"]["mmlu"].
-    mmlu_group = raw["groups"]["mmlu"]
+    if row["task"] == "mmlu":
+        metric_block = raw["groups"]["mmlu"]
+    else:
+        metric_block = raw["results"][row["task"]]
 
     record = {
         "run_id": row["run_id"],
@@ -55,9 +58,9 @@ def main():
 
         # Parsed evaluation fields
         "metric_name": "acc",
-        "metric_value": float(mmlu_group["acc,none"]),
-        "metric_stderr": float(mmlu_group["acc_stderr,none"]),
-        "sample_len": int(mmlu_group["sample_len"]),
+        "metric_value": float(metric_block["acc,none"]),
+        "metric_stderr": float(metric_block["acc_stderr,none"]),
+        "sample_len": int(metric_block["sample_len"]),
         "eval_time_sec": float(raw.get("total_evaluation_time_seconds", -1.0)),
 
         # Provenance
