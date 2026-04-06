@@ -17,6 +17,39 @@ from pathlib import Path
 
 from src.utils.io import get_run_row, ensure_dir
 
+def pick_metric(metric_block: dict) -> tuple[str, float, float | None]:
+    """
+    Pick the main scalar metric from an lm-eval result block.
+
+    Preference order:
+    1. acc,none
+    2. exact_match,strict-match
+    3. exact_match,flexible-extract
+    4. exact_match,none
+    5. acc_norm,none
+    """
+    candidates = [
+        "acc,none",
+        "exact_match,get-answer",
+        "exact_match,strict-match",
+        "exact_match,flexible-extract",
+        "exact_match,none",
+        "acc_norm,none",
+    ]
+
+    for key in candidates:
+        if key in metric_block:
+            stderr_key = key.replace(",", "_stderr,")
+            metric_name = key.split(",")[0]
+            metric_value = float(metric_block[key])
+            metric_stderr = (
+                float(metric_block[stderr_key]) if stderr_key in metric_block else None
+            )
+            return metric_name, metric_value, metric_stderr
+
+    available = sorted(metric_block.keys())
+    raise KeyError(f"No supported metric key found. Available keys: {available}")
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -44,6 +77,8 @@ def main():
     else:
         metric_block = raw["results"][row["task"]]
 
+    metric_name, metric_value, metric_stderr = pick_metric(metric_block)
+
     record = {
         "run_id": row["run_id"],
         "phase": row["phase"],
@@ -57,10 +92,10 @@ def main():
         "seed": int(row["seed"]),
 
         # Parsed evaluation fields
-        "metric_name": "acc",
-        "metric_value": float(metric_block["acc,none"]),
-        "metric_stderr": float(metric_block["acc_stderr,none"]),
-        "sample_len": int(metric_block["sample_len"]),
+        "metric_name": metric_name,
+        "metric_value": metric_value,
+        "metric_stderr": metric_stderr,
+        "sample_len": int(metric_block.get("sample_len", -1)),
         "eval_time_sec": float(raw.get("total_evaluation_time_seconds", -1.0)),
 
         # Provenance

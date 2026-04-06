@@ -187,8 +187,8 @@ def run_pruned_synth_icl(cfg) -> None:
         "--output_json", raw_json_path,
     ]
 
-    if getattr(cfg, "limit", None) is not None:
-        eval_cmd.extend(["--limit", str(int(cfg.limit))])
+    if getattr(cfg, "limit", None) not in (None, ""):
+        eval_cmd.extend(["--limit", str(cfg.limit)])
 
     print("Running pruned synthetic ICL eval command:")
     print(" ".join(eval_cmd))

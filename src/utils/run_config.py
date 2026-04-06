@@ -12,6 +12,7 @@ from dataclasses import dataclass, asdict
 
 from src.utils.model_registry import get_model_config_path
 from typing import Optional
+import math
 
 
 @dataclass
@@ -66,11 +67,16 @@ def row_to_config(row: dict) -> RunConfig:
     model_key = str(row["model"])
     model_config_path = get_model_config_path(model_key)
 
-    limit = row.get("limit", None)
-    if limit is not None and str(limit).strip() != "":
-        limit = float(limit)
-    else: 
+    raw_limit = row.get("limit", None)
+
+    if raw_limit is None:
         limit = None
+    elif isinstance(raw_limit, float) and math.isnan(raw_limit):
+        limit = None
+    elif str(raw_limit).strip() == "":
+        limit = None
+    else:
+        limit = float(raw_limit)
 
     return RunConfig(
         run_id=str(row["run_id"]),
