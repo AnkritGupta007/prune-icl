@@ -22,7 +22,7 @@ def main():
     parser.add_argument(
         "--config",
         type=str,
-        default="configs/models/llama31_8b.yaml",
+        default="configs/models/llama32_3b.yaml",
         help="Path to model YAML config.",
     )
     args = parser.parse_args()

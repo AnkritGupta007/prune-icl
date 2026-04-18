@@ -25,9 +25,10 @@ LM_EVAL_TASKS = {
 PRUNED_METHODS = {
     "ria",
     "wanda",
-    "wandapp",
+    "wandaplus",
     "magnitude",
     "sparsegpt",
+    "wanda_owl"
 }
 
 
@@ -188,7 +189,7 @@ def run_pruned_synth_icl(cfg) -> None:
     ]
 
     if getattr(cfg, "limit", None) not in (None, ""):
-        eval_cmd.extend(["--limit", str(cfg.limit)])
+        eval_cmd.extend(["--limit", str(int(cfg.limit))])
 
     print("Running pruned synthetic ICL eval command:")
     print(" ".join(eval_cmd))

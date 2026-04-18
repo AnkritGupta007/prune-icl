@@ -1,10 +1,11 @@
 METHOD_BACKEND = {
     "dense": "none",
-    "magnitude": "ria",
-    "wanda": "ria",
+    "magnitude": "wandaplus",
+    "wanda": "wanda",
     "ria": "ria",
-    "sparsegpt": "ria",
-    "wandapp": "local",
+    "sparsegpt": "wandaplus",
+    "wandaplus": "wandaplus",
+    "wanda_owl": "wanda_owl",
 }
 
 

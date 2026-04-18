@@ -29,7 +29,7 @@ def main():
         "--config",
         type=str,
         required=True,
-        help="Path to model YAML config, e.g. configs/models/llama31_8b.yaml",
+        help="Path to model YAML config, e.g. configs/models/llama32_3b.yaml",
     )
     parser.add_argument(
         "--task",
@@ -46,7 +46,7 @@ def main():
     parser.add_argument(
         "--limit",
         type=float,
-        default=20,
+        default=None,
         help="Small smoke-test limit. Can be int or float depending on harness behavior.",
     )
     parser.add_argument(
@@ -93,10 +93,11 @@ def main():
         "--model_args", f"pretrained={model_source},device_map=auto",
         "--tasks", args.task,
         "--num_fewshot", str(args.num_fewshot),
-        "--limit", str(args.limit),
         "--device", "cuda:0",
         "--output_path", str(output_path),
     ]
+    if args.limit is not None:
+        cmd.extend(["--limit", str(args.limit)])
 
     print("Running command:")
     print(" ".join(cmd))

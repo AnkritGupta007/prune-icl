@@ -11,7 +11,7 @@ from __future__ import annotations
 
 # Map short manifest model names to YAML config files.
 MODEL_CONFIG_PATHS = {
-    "llama31_8b": "configs/models/llama31_8b.yaml",
+    "llama32_3b": "configs/models/llama32_3b.yaml",
     "mistral7b_v03": "configs/models/mistral7b_v03.yaml",
 }
 
@@ -22,7 +22,7 @@ def get_model_config_path(model_key: str) -> str:
 
     Args:
         model_key: Short model name used in the manifest,
-            for example "llama31_8b".
+            for example "llama32_3b".
 
     Returns:
         Path to the corresponding YAML config file.

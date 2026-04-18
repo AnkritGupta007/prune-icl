@@ -16,7 +16,7 @@ def load_model_config(config_path: str) -> dict:
 
     Args:
         config_path: Path to a YAML file, for example:
-            configs/models/llama31_8b.yaml
+            configs/models/llama32_3b.yaml
 
     Returns:
         A dictionary containing model loading settings.

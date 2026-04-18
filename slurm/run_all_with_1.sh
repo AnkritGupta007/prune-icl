@@ -2,10 +2,9 @@
 #SBATCH -J eval_enabled
 #SBATCH -p Contributors
 #SBATCH -w GPU1
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=8
 #SBATCH --mem=128GB
 #SBATCH --gpus=1
-#SBATCH --time=24:00:00
 #SBATCH -o /home/a/ankritgupta/projects/prune-icl/logs/%x_%j.out
 #SBATCH -e /home/a/ankritgupta/projects/prune-icl/logs/%x_%j.err
 
