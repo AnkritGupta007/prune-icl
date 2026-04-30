@@ -18,8 +18,15 @@ LM_EVAL_TASKS = {
     "mmlu",
     "mmlu_abstract_algebra",
     "bbh",
+    "bbh_fewshot",
+    "bbh_zeroshot",
     "gsm8k",
     "capability_mini",
+    "bbh_fewshot_boolean_expressions",
+    "bbh_cot_fewshot", 
+    "bbh_cot_zeroshot",
+    "bbh_cot_fewshot_boolean_expressions"
+    
 }
 
 PRUNED_METHODS = {
@@ -72,6 +79,24 @@ def build_lm_eval_cmd(cfg, checkpoint_path: str | None = None) -> list[str]:
 
     if getattr(cfg, "limit", None) is not None:
         cmd.extend(["--limit", str(cfg.limit)])
+
+    # phase = str(getattr(cfg, "phase", "") or "").lower()
+    notes = str(getattr(cfg, "notes", "") or "").lower()
+
+    # if "debug_bbh" in notes:
+    #     cmd.extend(["--gen_kwargs", "until=['</s>', 'Q:', '<|im_end|>']"])
+
+    # if phase == "phase_debug" or "debug" in notes:
+    #     cmd.append("--log_samples")
+
+    # if "chat" in notes:
+    #     cmd.append("--apply_chat_template")
+    
+    # if "stopfix2" in notes:
+    #     cmd.extend(["--gen_kwargs", r"until=\n\nQ:"])
+
+    # elif "stopfix" in notes:
+    #     cmd.extend(["--gen_kwargs", 'until=["</s>"]'])
 
     return cmd
 
@@ -221,9 +246,9 @@ def main():
     cfg = row_to_config(row)
 
     # Honor enabled flag from manifest.
-    if int(cfg.enabled) != 1:
-        print(f"Run is disabled in manifest: {cfg.run_id}")
-        return
+    # if int(cfg.enabled) != 1:
+    #     print(f"Run is disabled in manifest: {cfg.run_id}")
+    #     return
 
     backend = get_backend(cfg.method)
 

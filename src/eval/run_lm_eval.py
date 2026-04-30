@@ -61,6 +61,10 @@ def main():
         default=None,
         help="Optional local checkpoint directory. If provided, use it instead of hf_model_name."
     )
+    parser.add_argument("--log_samples", action="store_true")
+    parser.add_argument("--apply_chat_template", action="store_true")
+    parser.add_argument("--gen_kwargs", type=str, default=None,
+                        help='Optional lm-eval generation kwargs string, e.g. "until=[\\"</s>\\"]"')
     args = parser.parse_args()
 
     # Load model settings from YAML.
@@ -90,14 +94,24 @@ def main():
     cmd = [
         "lm_eval",
         "--model", "hf",
-        "--model_args", f"pretrained={model_source},device_map=auto",
+        "--model_args", f"pretrained={model_source},dtype=bfloat16,device_map=auto",
         "--tasks", args.task,
         "--num_fewshot", str(args.num_fewshot),
         "--device", "cuda:0",
+        "--batch_size", "auto:4",
+        "--max_batch_size", "32",
         "--output_path", str(output_path),
     ]
     if args.limit is not None:
         cmd.extend(["--limit", str(args.limit)])
+    if args.log_samples:
+        cmd.append("--log_samples")
+
+    if args.apply_chat_template:
+        cmd.append("--apply_chat_template")
+
+    if args.gen_kwargs:
+        cmd.extend(["--gen_kwargs", args.gen_kwargs])
 
     print("Running command:")
     print(" ".join(cmd))

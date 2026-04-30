@@ -2,7 +2,7 @@
 #SBATCH -J eval_run
 #SBATCH -p Contributors
 #SBATCH -w GPU1
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=4
 #SBATCH --mem=128GB
 #SBATCH --gpus=1
 #SBATCH -o /home/a/ankritgupta/projects/prune-icl/logs/%x_%j.out

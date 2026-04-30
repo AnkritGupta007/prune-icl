@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #SBATCH -J eval_enabled
 #SBATCH -p Contributors
-#SBATCH -w GPU1
+#SBATCH -w GPU54
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=128GB
 #SBATCH --gpus=1
@@ -12,7 +12,8 @@ set -euo pipefail
 set -x
 
 ROOT=/home/a/ankritgupta/projects/prune-icl
-MANIFEST="${1:-${ROOT}/manifests/full-manifest.csv}"
+MANIFEST="${ROOT}/manifests/full-manifest.csv"
+ENABLED_VALUE="${1:-1}"
 
 ENV_NAME=pruneicl-eval
 ENV_PY=/home/a/ankritgupta/.conda/envs/pruneicl-eval/bin/python
@@ -27,37 +28,62 @@ cd "${ROOT}"
 
 echo "JOB STARTED"
 echo "MANIFEST=${MANIFEST}"
+echo "ENABLED_VALUE=${ENABLED_VALUE}"
 echo "HOST=$(hostname)"
 echo "PWD=$(pwd)"
 date
 nvidia-smi
 
 "${ENV_PY}" -V
-"${ENV_PY}" -c "import transformers, accelerate, torch; print('transformers:', transformers.__version__); print('accelerate:', accelerate.__version__); print('torch:', torch.__version__); print('cuda:', torch.cuda.is_available()); print('gpu:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'none')"
+"${ENV_PY}" -c "import transformers, accelerate, torch; print('transformers:', transformers.__version__); print('accelerate:', accelerate.__version__); print('torch:', torch.__version__); print('cuda:', torch.cuda.is_available()); print('gpu_count:', torch.cuda.device_count()); print('gpu0:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'none')"
 
 mapfile -t RUN_IDS < <("${ENV_PY}" - <<PY
 import pandas as pd
-df = pd.read_csv("${MANIFEST}")
-enabled = df[df["enabled"] == 1]["run_id"].tolist()
-for rid in enabled:
+
+manifest = "${MANIFEST}"
+enabled_value = int("${ENABLED_VALUE}")
+
+df = pd.read_csv(manifest)
+
+if "enabled" not in df.columns:
+    raise ValueError("Manifest must contain an 'enabled' column")
+if "run_id" not in df.columns:
+    raise ValueError("Manifest must contain a 'run_id' column")
+
+selected = (
+    df[df["enabled"] == enabled_value]["run_id"]
+    .dropna()
+    .astype(str)
+    .tolist()
+)
+
+for rid in selected:
     print(rid)
 PY
 )
 
-echo "TOTAL ENABLED RUNS: ${#RUN_IDS[@]}"
+echo "TOTAL RUNS FOR enabled=${ENABLED_VALUE}: ${#RUN_IDS[@]}"
+
+if [ "${#RUN_IDS[@]}" -eq 0 ]; then
+  echo "No runs found for enabled=${ENABLED_VALUE}"
+  exit 0
+fi
 
 for RUN_ID in "${RUN_IDS[@]}"; do
   echo "========================================"
   echo "STARTING RUN_ID=${RUN_ID}"
   date
 
-  "${ENV_PY}" -m src.runner \
-    --run_id "${RUN_ID}" \
-    --manifest "${MANIFEST}"
+  if "${ENV_PY}" -m src.runner \
+      --run_id "${RUN_ID}" \
+      --manifest "${MANIFEST}"; then
+    echo "FINISHED RUN_ID=${RUN_ID}"
+  else
+    echo "FAILED RUN_ID=${RUN_ID}"
+  fi
 
-  echo "FINISHED RUN_ID=${RUN_ID}"
   date
 done
 
-echo "ALL ENABLED RUNS DONE"
+echo "ALL RUNS FOR enabled=${ENABLED_VALUE} DONE"
 date
